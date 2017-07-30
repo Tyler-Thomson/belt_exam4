@@ -1,0 +1,32 @@
+<div>
+  <h1>New Appointment</h1>
+  <div>
+    <form (submit)="createAppointment(); newAForm.reset()" #newAForm="ngForm">
+      <label>Date:</label>
+      <input type="date" name="date" >
+      <label>Time:</label>
+      <select name="time">
+        <option>8:00 AM</option>
+				<option>9:00 AM</option>
+				<option>10:00 AM</option>
+				<option>11:00 AM</option>
+				<option>12:00 PM</option>
+				<option>1:00 PM</option>
+				<option>2:00 PM</option>
+				<option>3:00 PM</option>
+				<option>4:00 PM</option>
+				<option>5:00 PM</option>
+      </select>
+      <div>
+        <label>Complaint:</label>
+        <textarea required name="complaint" [(ngModel)]="newAppointment.complaint"
+         rows="6" cols="40"
+         ></textarea>
+      </div>
+      <button [routerLink]="['/dashboard']">Cancel</button>
+      <button type="submit">Add Appointment</button>
+    </form>
+    <p *ngFor="let error of errors" [ngStyle]="{'color': 'red'}">{{ error }}</p>
+  </div>
+</div>
+

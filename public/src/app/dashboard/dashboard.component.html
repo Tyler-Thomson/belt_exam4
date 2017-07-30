@@ -1,0 +1,17 @@
+<a href (click)="logout()">Logout</a>
+<h1>Doctor's Appointments</h1>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Patient Name</th>
+    <th>Complaint</th>
+  </tr>
+  <tr *ngFor="let appointment of appointments; let idx = index">
+    <td>{{ appointment.createdAt | date:'yMMMd' }}</td>
+    <td>{{ appointment.createdAt | date:'shortTime' }}</td>
+    <td>Can't get the user name- appointment.user.name doesn't work</td>
+    <td>{{ appointment.complaint }}<button *ngIf="currentUser._id == appointment.user?._id" (click)="delete(appointment._id)">Cancel</button></td>
+  </tr>
+</table>
+<button [routerLink]="['/create']">Add new appointment</button>
